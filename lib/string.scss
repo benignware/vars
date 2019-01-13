@@ -1,12 +1,12 @@
-@function vars--string-capitalize($string) {
+@function varss--string-capitalize($string) {
   @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
 }
 
-@function vars--string-contain($list, $value) {
+@function varss--string-contain($list, $value) {
   @return not not index($list, $value);
 }
 
-@function vars--string-camelize($string) {
+@function varss--string-camelize($string) {
   $progress: $string;
   $result: '';
   $exclude: ' ', '-', '–', '—', '_', ',', ';', ':', '.';
@@ -14,8 +14,8 @@
   @while str-length($progress) > 0  {
     $char: str-slice($progress, 1, 1);
 
-    @if vars--string-contain($exclude, $char) {
-      $progress: vars--string-capitalize(str-slice($progress, 2, 2)) + str-slice($progress, 3);
+    @if varss--string-contain($exclude, $char) {
+      $progress: varss--string-capitalize(str-slice($progress, 2, 2)) + str-slice($progress, 3);
     } @else {
       $result: $result + $char;
       $progress: str-slice($progress, 2);

@@ -1,7 +1,7 @@
 @import './lib/map';
 @import './lib/string';
 
-$--vars--data: () !global;
+$--varss--data: () !global;
 
 $var-prefix: '';
 $var-style: camelCase;
@@ -11,19 +11,19 @@ $var-style: camelCase;
     $name: $value
   ));
 
-  $--vars--data: map-merge($--vars--data, $vars) !global;
+  $--varss--data: map-merge($--varss--data, $vars) !global;
 
-  @each $name, $value in vars--map-flatten($vars) {
+  @each $name, $value in varss--map-flatten($vars) {
     $key: $name;
     @if $style == camelCase {
-      $key: vars--string-camelize($name);
+      $key: varss--string-camelize($name);
     }
 
     --#{$prefix}#{$key}: #{$value};
   }
 }
 
-@function var-get($name, $style: $var-style, $prefix: $var-prefix, $vars: $--vars--data) {
+@function var-get($name, $style: $var-style, $prefix: $var-prefix, $vars: $--varss--data) {
   $var: map-get($vars, $name);
 
   @if $var {
@@ -35,7 +35,7 @@ $var-style: camelCase;
         $child-prefix: $prefix + $name + '-';
 
         @if $style == camelCase {
-          $child-prefix: $prefix + vars--string-camelize($name);
+          $child-prefix: $prefix + varss--string-camelize($name);
         }
 
         $rec-value: var-get($key, $style: $style, $prefix: $child-prefix, $vars: $var);
@@ -53,8 +53,8 @@ $var-style: camelCase;
     $exclude: ' ', '-', '–', '—', '_', ',', ';', ':', '.';
     $char: str-slice($prefix, str-length($prefix));
 
-    @if not vars--string-contain($exclude, $char) {
-      $name: vars--string-capitalize($name);
+    @if not varss--string-contain($exclude, $char) {
+      $name: varss--string-capitalize($name);
     }
   }
 

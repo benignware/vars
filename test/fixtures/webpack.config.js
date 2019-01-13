@@ -63,7 +63,7 @@ module.exports = (env, { mode = 'production' }) => ({
   },
   resolve: {
     alias: {
-      'vars': path.join(__dirname, '../../vars.scss')
+      'varss': path.join(__dirname, '../../varss.scss')
     }
   }
 });

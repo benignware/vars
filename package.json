@@ -1,8 +1,8 @@
 {
-  "name": "vars",
-  "version": "0.0.1",
+  "name": "varss",
+  "version": "0.0.2",
   "description": "A scss library for working with css variables",
-  "main": "vars.scss",
+  "main": "varss.scss",
   "scripts": {
     "clean": "rm -rf tmp",
     "test": "mocha test/test.js --reporter spec",

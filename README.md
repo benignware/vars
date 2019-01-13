@@ -1,4 +1,4 @@
-# vars
+# varss
 
 A scss library for working with CSS Variables
 
@@ -6,7 +6,7 @@ A scss library for working with CSS Variables
 ## Install
 
 ```cli
-npm i vars -D
+npm i varss -D
 ```
 
 ## Usage
@@ -117,7 +117,7 @@ Output:
 }
 ```
 
-> Note: `vars` is intented for being used at application level and is currently not suited for being incorporated into a dedicated scss library
+> Note: `varss` is intented for being used at application level and is currently not suited for being incorporated into a dedicated scss library
 
 ## Development
 
