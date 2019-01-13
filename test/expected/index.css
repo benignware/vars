@@ -11,7 +11,7 @@
 .Button {
   -webkit-appearance: none;
   cursor: pointer;
-  padding: 0.25rem 0.1rem;
+  padding: 0.25rem 0.5rem;
   border-style: solid;
   border-radius: var(--prefix-borderRadius);
   border-width: var(--prefix-borderWidth);
