@@ -3,6 +3,13 @@
   "version": "0.0.2",
   "description": "A scss library for working with css variables",
   "main": "varss.scss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benignware/varss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benignware/varss/issues"
+  },
   "scripts": {
     "clean": "rm -rf tmp",
     "test": "mocha test/test.js --reporter spec",
@@ -16,7 +23,7 @@
     "css-variables",
     "css-custom-properties"
   ],
-  "author": "Rafael Nowrotek",
+  "author": "Rafael Nowrotek <mail@benignware.com> (http://benignware.com)",
   "license": "MIT",
   "devDependencies": {
     "css-loader": "^2.1.0",
