@@ -1,0 +1,18 @@
+$var-prefix: prefix-;
+$var-style: camelCase;
+
+:root {
+  @include var-set((
+    borderWidth: 1px,
+    borderRadius: 3px,
+    fontSize: 12px,
+    context: (
+      primary: blue,
+      secondary: orange
+    ),
+    inverse: (
+      primary: white,
+      secondary: black
+    )
+  ));
+}

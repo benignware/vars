@@ -1,0 +1,64 @@
+@import './lib/map';
+@import './lib/string';
+
+$--vars--data: () !global;
+
+$var-prefix: '';
+$var-style: camelCase;
+
+@mixin var-set($name, $value: null, $style: $var-style, $prefix: $var-prefix) {
+  $vars: if(type-of($name) == 'map', $name, (
+    $name: $value
+  ));
+
+  $--vars--data: map-merge($--vars--data, $vars) !global;
+
+  @each $name, $value in vars--map-flatten($vars) {
+    $key: $name;
+    @if $style == camelCase {
+      $key: vars--string-camelize($name);
+    }
+
+    --#{$prefix}#{$key}: #{$value};
+  }
+}
+
+@function var-get($name, $style: $var-style, $prefix: $var-prefix, $vars: $--vars--data) {
+  $var: map-get($vars, $name);
+
+  @if $var {
+
+    @if type-of($var) == 'map' {
+      $result: ();
+
+      @each $key, $value in $var {
+        $child-prefix: $prefix + $name + '-';
+
+        @if $style == camelCase {
+          $child-prefix: $prefix + vars--string-camelize($name);
+        }
+
+        $rec-value: var-get($key, $style: $style, $prefix: $child-prefix, $vars: $var);
+
+        $result: map-merge($result, (
+          $key: $rec-value
+        ));
+      }
+
+      @return $result;
+    }
+  }
+
+  @if str-length($prefix) > 0 {
+    $exclude: ' ', '-', '–', '—', '_', ',', ';', ':', '.';
+    $char: str-slice($prefix, str-length($prefix));
+
+    @if not vars--string-contain($exclude, $char) {
+      $name: vars--string-capitalize($name);
+    }
+  }
+
+  $value: var(--#{$prefix}#{$name});
+
+  @return $value;
+}

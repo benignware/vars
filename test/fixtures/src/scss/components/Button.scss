@@ -1,0 +1,29 @@
+.Button {
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding: 0.25rem 0.1rem;
+  border-style: solid;
+  border-radius: var-get('borderRadius');
+  border-width: var-get('borderWidth');
+  font-size: var-get('fontSize');
+
+  // You may either refer to variables by their flat name...
+  &--outline#{&}--primary {
+    border-color: var-get('contextPrimary');
+    color: var-get('contextPrimary');
+  }
+
+  &--outline#{&}--secondary {
+    border-color: var-get('contextSecondary');
+    color: var-get('contextSecondary');
+  }
+
+  // Or access lists and maps as specified via `var-set`
+  @each $name, $value in var-get('context') {
+    &--#{$name}:not(&--outline) {
+      border-color: $value;
+      background: $value;
+      color: map-get(var-get('inverse'), $name);
+    }
+  }
+}

@@ -1,0 +1,41 @@
+:root {
+  --prefix-borderWidth: 1px;
+  --prefix-borderRadius: 3px;
+  --prefix-fontSize: 12px;
+  --prefix-contextPrimary: blue;
+  --prefix-contextSecondary: orange;
+  --prefix-inversePrimary: white;
+  --prefix-inverseSecondary: black;
+}
+
+.Button {
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding: 0.25rem 0.1rem;
+  border-style: solid;
+  border-radius: var(--prefix-borderRadius);
+  border-width: var(--prefix-borderWidth);
+  font-size: var(--prefix-fontSize);
+}
+
+.Button--outline.Button--primary {
+  border-color: var(--prefix-contextPrimary);
+  color: var(--prefix-contextPrimary);
+}
+
+.Button--outline.Button--secondary {
+  border-color: var(--prefix-contextSecondary);
+  color: var(--prefix-contextSecondary);
+}
+
+.Button--primary:not(.Button--outline) {
+  border-color: var(--prefix-contextPrimary);
+  background: var(--prefix-contextPrimary);
+  color: var(--prefix-inversePrimary);
+}
+
+.Button--secondary:not(.Button--outline) {
+  border-color: var(--prefix-contextSecondary);
+  background: var(--prefix-contextSecondary);
+  color: var(--prefix-inverseSecondary);
+}
