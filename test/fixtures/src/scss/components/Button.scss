@@ -9,17 +9,17 @@
 
   // You may either refer to variables by their flat name...
   &--outline#{&}--primary {
-    border-color: var-get('contextPrimary');
-    color: var-get('contextPrimary');
+    border-color: var-get('colorPrimary');
+    color: var-get('colorPrimary');
   }
 
   &--outline#{&}--secondary {
-    border-color: var-get('contextSecondary');
-    color: var-get('contextSecondary');
+    border-color: var-get('colorSecondary');
+    color: var-get('colorSecondary');
   }
 
   // Or access lists and maps as specified via `var-set`
-  @each $name, $value in var-get('context') {
+  @each $name, $value in var-get('color') {
     &--#{$name}:not(&--outline) {
       border-color: $value;
       background: $value;

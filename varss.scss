@@ -7,14 +7,21 @@ $var-prefix: '';
 $var-style: camelCase;
 
 @mixin var-set($name, $value: null, $style: $var-style, $prefix: $var-prefix) {
-  $vars: if(type-of($name) == 'map', $name, (
-    $name: $value
+  $vars: if(type-of($name) == 'map' or type-of($name) == 'list', $name, (
+    '#{$name}': $value
   ));
 
-  $--varss--data: map-merge($--varss--data, $vars) !global;
+  $vars-cast: ();
+  @each $name, $value in $vars {
+    $vars-cast: map-merge($vars-cast, (
+      '#{$name}': $value
+    ));
+  }
 
-  @each $name, $value in varss--map-flatten($vars) {
-    $key: $name;
+  $--varss--data: map-merge($--varss--data, $vars-cast) !global;
+
+  @each $name, $value in varss--map-flatten($vars-cast) {
+    $key: '#{$name}';
     @if $style == camelCase {
       $key: varss--string-camelize($name);
     }
@@ -24,11 +31,9 @@ $var-style: camelCase;
 }
 
 @function var-get($name, $style: $var-style, $prefix: $var-prefix, $vars: $--varss--data) {
-  $var: map-get($vars, $name);
-
+  $var: map-get($--varss--data, quote($name));
   @if $var {
-
-    @if type-of($var) == 'map' {
+    @if type-of($var) == 'map' or type-of($var) == 'list' {
       $result: ();
 
       @each $key, $value in $var {
@@ -41,7 +46,7 @@ $var-style: camelCase;
         $rec-value: var-get($key, $style: $style, $prefix: $child-prefix, $vars: $var);
 
         $result: map-merge($result, (
-          $key: $rec-value
+          #{varss--string-capitalize($key)}: $rec-value
         ));
       }
 

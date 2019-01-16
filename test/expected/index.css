@@ -2,8 +2,13 @@
   --prefix-borderWidth: 1px;
   --prefix-borderRadius: 3px;
   --prefix-fontSize: 12px;
-  --prefix-contextPrimary: blue;
-  --prefix-contextSecondary: orange;
+  --prefix-colorPrimary: blue;
+  --prefix-colorSecondary: orange;
+  --prefix-gray100: #efefef;
+  --prefix-gray300: #adadad;
+  --prefix-gray500: #989898;
+  --prefix-gray700: #676767;
+  --prefix-gray900: #151515;
   --prefix-inversePrimary: white;
   --prefix-inverseSecondary: black;
 }
@@ -19,23 +24,51 @@
 }
 
 .Button--outline.Button--primary {
-  border-color: var(--prefix-contextPrimary);
-  color: var(--prefix-contextPrimary);
+  border-color: var(--prefix-colorPrimary);
+  color: var(--prefix-colorPrimary);
 }
 
 .Button--outline.Button--secondary {
-  border-color: var(--prefix-contextSecondary);
-  color: var(--prefix-contextSecondary);
+  border-color: var(--prefix-colorSecondary);
+  color: var(--prefix-colorSecondary);
 }
 
-.Button--primary:not(.Button--outline) {
-  border-color: var(--prefix-contextPrimary);
-  background: var(--prefix-contextPrimary);
+.Button--Primary:not(.Button--outline) {
+  border-color: var(--prefix-colorPrimary);
+  background: var(--prefix-colorPrimary);
   color: var(--prefix-inversePrimary);
 }
 
-.Button--secondary:not(.Button--outline) {
-  border-color: var(--prefix-contextSecondary);
-  background: var(--prefix-contextSecondary);
+.Button--Secondary:not(.Button--outline) {
+  border-color: var(--prefix-colorSecondary);
+  background: var(--prefix-colorSecondary);
   color: var(--prefix-inverseSecondary);
+}
+
+.u-backgroundColorPrimary {
+  background-color: var(--prefix-colorPrimary);
+}
+
+.u-backgroundColorSecondary {
+  background-color: var(--prefix-colorSecondary);
+}
+
+.u-backgroundGray100 {
+  background-color: var(--prefix-gray100);
+}
+
+.u-backgroundGray300 {
+  background-color: var(--prefix-gray300);
+}
+
+.u-backgroundGray500 {
+  background-color: var(--prefix-gray500);
+}
+
+.u-backgroundGray700 {
+  background-color: var(--prefix-gray700);
+}
+
+.u-backgroundGray900 {
+  background-color: var(--prefix-gray900);
 }

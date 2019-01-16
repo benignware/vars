@@ -1,0 +1,13 @@
+.u-background {
+  @each $name, $value in var-get('color') {
+    &Color#{$name} {
+      background-color: $value;
+    }
+  }
+
+  @each $name, $value in var-get('gray') {
+    &Gray#{$name} {
+      background-color: $value;
+    }
+  }
+}

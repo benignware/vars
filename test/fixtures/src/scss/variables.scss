@@ -6,9 +6,16 @@ $var-style: camelCase;
     borderWidth: 1px,
     borderRadius: 3px,
     fontSize: 12px,
-    context: (
+    color: (
       primary: blue,
       secondary: orange
+    ),
+    gray: (
+      100: #efefef,
+      300: #adadad,
+      500: #989898,
+      700: #676767,
+      900: #151515
     ),
     inverse: (
       primary: white,
