@@ -51,11 +51,15 @@ module.exports = (env, { mode = 'production' }) => ({
           {
             loader: 'css-loader'
           }, {
+            loader: 'postcss-loader'
+          }, {
             loader: 'sass-loader',
             options: {
               includePaths: [
                 path.resolve(__dirname, 'node_modules')
-              ]
+              ],
+              linefeed: 'lf',
+              outputStyle: 'nested'
             }
           }
         ])

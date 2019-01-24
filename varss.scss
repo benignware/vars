@@ -3,10 +3,12 @@
 
 $--varss--data: () !global;
 
-$var-prefix: '';
-$var-style: camelCase;
+$var-prefix: '' !default;
+$var-style: camelCase !default;
+$var-sets: false !default;
 
-@mixin var-set($name, $value: null, $style: $var-style, $prefix: $var-prefix) {
+@mixin var-set($name, $value: null, $style: $var-style, $prefix: $var-prefix, $sets: $var-sets) {
+  $line-break: '\D\A';
   $vars: if(type-of($name) == 'map' or type-of($name) == 'list', $name, (
     '#{$name}': $value
   ));
@@ -20,13 +22,23 @@ $var-style: camelCase;
 
   $--varss--data: map-merge($--varss--data, $vars-cast) !global;
 
-  @each $name, $value in varss--map-flatten($vars-cast) {
-    $key: '#{$name}';
-    @if $style == camelCase {
-      $key: varss--string-camelize($name);
-    }
+  @if ($sets == null) {
+    $vars-cast: varss--map-flatten($vars-cast);
+  }
 
-    --#{$prefix}#{$key}: #{$value};
+  @each $name, $value in $vars-cast {
+    $key: if($style == camelCase, varss--string-camelize($name), $key);
+    $var: --#{$prefix}#{$key};
+
+    @if ($sets and type-of($value) == 'map') {
+      $map: if($style == camelCase, varss--map-camelize-keys($value), $value);
+      $string: inspect($map);
+      $string: "#{varss--string-replace($string, ', ', ';\D\A')}";
+      $string: str-slice($string, 2, str-length($string) - 1);
+      #{$var}: #{unquote("{\D\A" + $string + "\D\A}")};
+    } @else {
+      #{$var}: #{$value};
+    }
   }
 }
 

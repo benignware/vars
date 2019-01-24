@@ -1,3 +1,5 @@
+@import './lib/string';
+
 @function varss--map-flatten($map, $delimiter: '-', $recursive: true, $prefix: '') {
   $result: ();
 
@@ -9,6 +11,18 @@
         #{$prefix}#{$name}: #{$value}
       ));
     }
+  }
+
+  @return $result;
+}
+
+@function varss--map-camelize-keys($map, $delimiter: '-', $recursive: true, $prefix: '') {
+  $result: ();
+
+  @each $key, $value in $map {
+    $result: map-merge($result, (
+      #{varss--string-camelize(#{$key})}: $value
+    ));
   }
 
   @return $result;

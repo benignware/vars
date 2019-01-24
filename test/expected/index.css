@@ -2,15 +2,21 @@
   --prefix-borderWidth: 1px;
   --prefix-borderRadius: 3px;
   --prefix-fontSize: 12px;
-  --prefix-colorPrimary: blue;
-  --prefix-colorSecondary: orange;
-  --prefix-gray100: #efefef;
-  --prefix-gray300: #adadad;
-  --prefix-gray500: #989898;
-  --prefix-gray700: #676767;
-  --prefix-gray900: #151515;
-  --prefix-inversePrimary: white;
-  --prefix-inverseSecondary: black;
+  --prefix-color: {
+    primary: blue;
+    secondary: orange;
+  };
+  --prefix-gray: {
+    100: #efefef;
+    300: #adadad;
+    500: #989898;
+    700: #676767;
+    900: #151515;
+  };
+  --prefix-inverse: {
+    primary: white;
+    secondary: black;
+  };
 }
 
 .Button {
