@@ -46,7 +46,7 @@ $var-style: camelCase;
         $rec-value: var-get($key, $style: $style, $prefix: $child-prefix, $vars: $var);
 
         $result: map-merge($result, (
-          #{varss--string-capitalize($key)}: $rec-value
+          #{$key}: $rec-value
         ));
       }
 

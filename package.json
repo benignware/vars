@@ -1,6 +1,6 @@
 {
   "name": "varss",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A scss library for working with css variables",
   "main": "varss.scss",
   "repository": {
